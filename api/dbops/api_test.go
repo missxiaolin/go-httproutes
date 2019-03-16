@@ -37,21 +37,21 @@ func testAddUser(t *testing.T)  {
 }
 
 func testGetUser(t *testing.T)  {
-	pwd, err := GetUserCredential("avenssi")
+	pwd, err := GetUserCredential("xiaolin")
 	if pwd != "123" || err != nil {
 		t.Errorf("Error of GetUser")
 	}
 }
 
 func testDeleteUser(t *testing.T)  {
-	err := DeleteUser("avenssi", "123")
+	err := DeleteUser("xiaolin", "123")
 	if err != nil {
 		t.Errorf("Error of DeleteUser: %v", err)
 	}
 }
 
 func testRegetUser(t *testing.T)  {
-	pwd, err := GetUserCredential("avenssi")
+	pwd, err := GetUserCredential("xiaolin")
 	if err != nil {
 		t.Errorf("Error of RegetUser: %v", err)
 	}
@@ -106,4 +106,29 @@ func TestComments(t *testing.T) {
 	t.Run("ListComments", testListComments)
 }
 
+func testAddComments(t *testing.T) {
+	vid := "12345"
+	aid := 1
+	content := "I like this video"
 
+	err := AddNewComments(vid, aid, content)
+
+	if err != nil {
+		t.Errorf("Error of AddComments: %v", err)
+	}
+}
+
+func testListComments(t *testing.T) {
+	vid := "12345"
+	from := 1514764800
+	to, _ := strconv.Atoi(strconv.FormatInt(time.Now().UnixNano()/1000000000, 10))
+
+	res, err := ListComments(vid, from, to)
+	if err != nil {
+		t.Errorf("Error of ListComments: %v", err)
+	}
+
+	for i, ele := range res {
+		fmt.Printf("comment: %d, %v \n", i, ele)
+	}
+}
