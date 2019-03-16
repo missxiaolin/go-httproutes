@@ -4,4 +4,5 @@
 
 ~~~
 go get github.com/julienschmidt/httprouter
+go get -u github.com/go-sql-driver/mysql
 ~~~
