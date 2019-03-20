@@ -2,6 +2,7 @@ package main
 
 import "log"
 
+// 流控
 type ConnLimiter struct {
 	concurrentConn int
 	bucket chan int
