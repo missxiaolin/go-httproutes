@@ -3,19 +3,20 @@ package main
 import (
 	"github.com/julienschmidt/httprouter"
 	"net/http"
-	"video_server/api/response"
 	"video_server/streamserver/handlers"
+	"video_server/streamserver/response"
+	"video_server/streamserver/util"
 )
 
 type middleWareHandler struct {
 	r *httprouter.Router
-	l *ConnLimiter
+	l *util.ConnLimiter
 }
 
 func NewMiddleWareHandler(r *httprouter.Router, cc int) http.Handler {
 	m := middleWareHandler{}
 	m.r = r
-	m.l = NewConnLimiter(cc)
+	m.l = util.NewConnLimiter(cc)
 	return m
 }
 
