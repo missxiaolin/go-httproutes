@@ -12,5 +12,7 @@ func RegisterHandlers() *httprouter.Router {
 
 	router.POST("/upload/:vid-id", handlers.UploadHandler)
 
+	router.GET("/testpage", handlers.TestPageHandler)
+
 	return router;
 }

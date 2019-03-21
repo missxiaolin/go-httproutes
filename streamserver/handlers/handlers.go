@@ -2,6 +2,7 @@ package handlers
 
 import (
 	"github.com/julienschmidt/httprouter"
+	"html/template"
 	"io"
 	"io/ioutil"
 	"log"
@@ -12,7 +13,14 @@ import (
 	"video_server/streamserver/response"
 )
 
+/**
+上传视频模板
+ */
+func TestPageHandler(w http.ResponseWriter, r *http.Request, p httprouter.Params) {
+	t, _ := template.ParseFiles("./videos/upload.html")
 
+	t.Execute(w, nil)
+}
 
 /**
 视频播放
