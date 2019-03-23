@@ -5,33 +5,18 @@ import (
 	"log"
 )
 
-func ReadVideoDeletetionRecord(count int) ([]string, error) {
-	stmIns, err := dbConn.Prepare("SELECT video_id FROM video_del_rec LIMIT")
-
-	var ids []string
-
-	
+func AddVideoDeletionRecord(vid string) error {
+	stmtIns, err := dbConn.Prepare("INSERT INTO video_del_rec (video_id) VALUES(?)")
 	if err != nil {
-		return  ids, err
+		return err
 	}
 
-	rows, err := stmIns.Query(count)
-
+	_, err = stmtIns.Exec(vid)
 	if err != nil {
-		log.Printf("ReadVideoDeletetionRecord error: %v", err)
-		return ids, err
+		log.Printf("AddVideoDeletionRecord error: %v", err)
+		return err
 	}
 
-	for rows.Next() {
-		var id string
-		if err := rows.Scan(&id); err != nil {
-			return ids, err
-		}
-
-		ids = append(ids, id)
-	}
-
-	defer stmIns.Close()
-
-	return  ids, nil
+	defer stmtIns.Close()
+	return nil
 }

@@ -20,7 +20,7 @@ func deleteVideo(vid string) error {
 }
 
 func VideoClearDispatcher(dc dataChan) error {
-	res, err := dbops.ReadVideoDeletetionRecord(3)
+	res, err := dbops.ReadVideoDeletionRecord(3)
 
 	if err != nil {
 		log.Printf("Video clear dispatcher err: %v", err)
