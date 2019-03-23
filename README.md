@@ -20,3 +20,9 @@ go get github.com/syyongx/vvalidator
 ~~~
 go get github.com/smartwalle/validator
 ~~~
+
+### 阿里云oss
+
+~~~
+go get github.com/aliyun/aliyun-oss-go-sdk
+~~~
