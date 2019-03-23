@@ -21,6 +21,6 @@ func VidDelRecHandler(w http.ResponseWriter, r *http.Request, p httprouter.Param
 		return
 	}
 
-	util.SendResponse(w, 200, "")
+	util.SendResponse(w, 200, "success")
 	return
 }
